@@ -16,7 +16,7 @@ resource "aws_instance" "example" {
 resource "null_resource" "connect_bastion1" {
   connection {
     type = "ssh"
-    host = "${self.public_ip}"
+    host = "${aws_instance.example.public_ip}"
     user = "${var.INSTANCE_USERNAME}"
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
