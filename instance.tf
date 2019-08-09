@@ -5,20 +5,15 @@ resource "aws_key_pair" "mykey" {
 
 resource "aws_instance" "example" {
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
-  public_key = "${aws_key_pair.mykey.public_key}"
 
   vpc_security_group_ids = ["sg-0e762a61"]
   instance_type = "t2.micro"
   key_name = "${aws_key_pair.mykey.key_name}"
 
-  provisioner "file" {
-    source = "script.sh"
-    destination = "/tmp/script.sh"
-  }
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/script.sh",
-      "sudo /tmp/script.sh"
+      "mkdir new_folder",
+      "ls"
     ]
   }
   connection {
