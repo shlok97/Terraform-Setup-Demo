@@ -10,7 +10,10 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
   key_name = "${aws_key_pair.mykey.key_name}"
 
-
+  tags = {
+    Role = "web"
+    Env = "dev"
+  }
 }
 
 resource "null_resource" "connect_bastion1" {
