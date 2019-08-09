@@ -5,6 +5,8 @@ resource "aws_key_pair" "mykey" {
 
 resource "aws_instance" "example" {
   ami = "${lookup(var.AMIS, var.AWS_REGION)}"
+  public_key = "${aws_key_pair.mykey.public_key}"
+
   vpc_security_group_ids = ["sg-0e762a61"]
   instance_type = "t2.micro"
   key_name = "${aws_key_pair.mykey.key_name}"
@@ -22,6 +24,7 @@ resource "aws_instance" "example" {
   connection {
     host = "${self.public_ip}"
     user = "${var.INSTANCE_USERNAME}"
+    host = "${self.private_ip}"
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 }
