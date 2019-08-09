@@ -24,7 +24,6 @@ resource "aws_instance" "example" {
   connection {
     host = "${self.public_ip}"
     user = "${var.INSTANCE_USERNAME}"
-    host = "${self.private_ip}"
     private_key = "${file("${var.PATH_TO_PRIVATE_KEY}")}"
   }
 }
