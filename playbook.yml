@@ -5,3 +5,5 @@
       command: mkdir SampleDir
     - name: Ansible command check the directory made
       command: ls
+      register: listOutput
+    - debug: msg="{{ listOutput.stdout }}"
