@@ -20,10 +20,5 @@
     - name: Start Docker Service
       command: sudo service docker start
 
-    - name: pull Product Recall Image
-      docker_image:
-        name: shlokkapoor/productrecall
-        source: pull
-    
     - name: run docker image
       command: sudo docker run --rm -p 8000:8000 shlokkapoor/productrecall
