@@ -6,6 +6,7 @@
       args:
         creates: SampleDir
     - name: Install a list of packages
+      become_method: sudo
       yum:
         name: "{{ packages }}"
       vars:
