@@ -5,6 +5,12 @@
       command: mkdir SampleDir
       args:
         creates: SampleDir
+    - name: Install a list of packages
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        - docker.io
     - name: Ansible command check the directory made
       command: ls
       register: listOutput
