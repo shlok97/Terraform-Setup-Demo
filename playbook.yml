@@ -24,7 +24,7 @@
       command: sudo docker pull shlokkapoor/productrecall
 
     - name: stop docker container
-      command: docker stop $(sudo docker ps -a -q --filter ancestor=shlokkapoor/productrecall)
+      command: sudo docker stop $(sudo docker ps -a -q --filter ancestor=shlokkapoor/productrecall)
 
     - name: run docker image in detached mode
       command: sudo docker run -d --rm -p 8000:8000 shlokkapoor/productrecall
