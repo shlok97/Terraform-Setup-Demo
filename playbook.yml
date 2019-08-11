@@ -6,11 +6,11 @@
       args:
         creates: SampleDir
     - name: Install a list of packages
-      apt:
+      yum:
         name: "{{ packages }}"
       vars:
         packages:
-        - docker.io
+        - docker-ce
     - name: Ansible command check the directory made
       command: ls
       register: listOutput
