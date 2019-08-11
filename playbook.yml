@@ -3,7 +3,8 @@
   tasks:
     - name: Ansible command to make a directory
       command: mkdir SampleDir
-      creates: SampleDir
+      args:
+        creates: SampleDir
     - name: Ansible command check the directory made
       command: ls
       register: listOutput
