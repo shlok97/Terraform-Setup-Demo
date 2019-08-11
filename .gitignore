@@ -1,3 +1,6 @@
 terraform.tfvars
 mykey
 mykey.pub
+terraform.tfstate
+terraform.tfstate.backup
+.terraform

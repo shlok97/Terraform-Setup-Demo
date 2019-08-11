@@ -21,3 +21,18 @@ pip install ansible
 or
 
 sudo apt install ansible
+
+
+# Running the following command gets the Ansible inventory
+
+terraform-inventory --list ./
+
+TF_STATE=./ /usr/local/bin/terraform-inventory --inventory
+
+TF_STATE=./ ansible-playbook --inventory-file=/usr/local/bin/terraform-inventory playbook.yml
+
+TF_STATE=./ ansible-playbook --inventory-file=/usr/local/bin/terraform-inventory --private-key=./mykey playbook.yml
+
+# Setup ansible config file
+
+sudo nano /etc/ansible/ansible.cfg
