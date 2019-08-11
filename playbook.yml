@@ -20,5 +20,11 @@
     - name: Start Docker Service
       command: sudo service docker start
 
+    - name: pull docker image
+      command: sudo docker pull shlokkapoor/productrecall
+      
+    - name: stop all docker containers
+      command: sudo docker stop shlokkapoor/productrecall
+
     - name: run docker image in detached mode
       command: sudo docker run -d --rm -p 8000:8000 shlokkapoor/productrecall
