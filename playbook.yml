@@ -1,0 +1,7 @@
+- hosts:
+    - my_web_server
+  tasks:
+    - name: Ansible command to make a directory
+      command: mkdir SampleDir
+    - name: Ansible command check the directory made
+      command: ls
