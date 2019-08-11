@@ -10,7 +10,7 @@
         name: "{{ packages }}"
       vars:
         packages:
-        - docker-ce
+        - docker
     - name: Ansible command check the directory made
       command: ls
       register: listOutput
