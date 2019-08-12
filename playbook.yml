@@ -5,7 +5,7 @@
       command: mkdir SampleDir
       args:
         creates: SampleDir
-    - name: Install a list of packages
+    - name: Install a list of packages - Docker
       sudo: yes
       yum:
         name: "{{ packages }}"
@@ -23,7 +23,7 @@
     - name: pull docker image
       command: sudo docker pull shlokkapoor/productrecall
 
-    - name: stop docker container
+    - name: check if a container is running and stop it
       shell: if [ -z $(sudo docker ps -a -q --filter ancestor=shlokkapoor/productrecall) ]; then echo hi; else sudo docker stop $(sudo docker ps -a -q --filter ancestor=shlokkapoor/productrecall); fi
 
     - name: run docker image in detached mode
