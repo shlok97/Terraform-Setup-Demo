@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Use this script to generate servers and deploy the docker image on them after performing the setup
 
