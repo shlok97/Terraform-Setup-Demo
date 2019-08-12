@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 # Use this script to generate servers and deploy the docker image on them after performing the setup
+# To run, execute "bash deploy.sh"
 
 terraform init
 
