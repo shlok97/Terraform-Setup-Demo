@@ -1,10 +1,6 @@
 - hosts:
     - my_web_server
   tasks:
-    - name: Ansible command to make a directory
-      command: mkdir SampleDir
-      args:
-        creates: SampleDir
     - name: Install a list of packages - Docker
       sudo: yes
       yum:
@@ -12,11 +8,6 @@
       vars:
         packages:
         - docker
-    - name: Ansible command check the directory made
-      command: ls
-      register: listOutput
-    - debug: msg="{{ listOutput.stdout }}"
-
     - name: Start Docker Service
       command: sudo service docker start
 
@@ -26,5 +17,8 @@
     - name: check if a container is running and stop it
       shell: if [ -z $(sudo docker ps -a -q --filter ancestor=shlokkapoor/productrecall) ]; then echo hi; else sudo docker stop $(sudo docker ps -a -q --filter ancestor=shlokkapoor/productrecall); fi
 
+    - name: Start Serving NetData
+      shell: docker run -d --name=netdata -p 19999:19999 -v /etc/passwd:/host/etc/passwd:ro -v /etc/group:/host/etc/group:ro -v /proc:/host/proc:-v /sys:/host/sys:ro -v /var/run/docker.sock:/var/run/docker.sock:ro --cap-add SYS_PTRACE --security-opt apparmor=unconfined netdata/netdata
+    
     - name: run docker image in detached mode
       command: sudo docker run -d --rm -p 8000:8000 shlokkapoor/productrecall
